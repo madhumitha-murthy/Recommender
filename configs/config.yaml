@@ -1,0 +1,45 @@
+# Project configuration
+
+data:
+  n_customers: 50000
+  n_products: 12
+  transaction_months: 24
+  treatment_ratio: 0.5         # 50% of campaign targets are treatment group
+  base_conversion_rate: 0.015  # 1.5% base conversion (realistic for banking)
+  uplift_effect: 0.008         # ~0.8% incremental lift from recommendation
+  missing_data_rate: 0.05      # 5% missing values
+  cold_start_ratio: 0.08       # 8% customers with <3 transactions
+  random_seed: 42
+
+database:
+  host: localhost
+  port: 5432
+  name: nbp_recommender
+  user: postgres
+  password: ${DB_PASSWORD}
+
+model:
+  recommender:
+    n_estimators: 500
+    learning_rate: 0.05
+    max_depth: 6
+    n_optuna_trials: 50
+    cv_folds: 5
+    eval_k: [3, 5, 10]
+  uplift:
+    method: t_learner
+    base_model: lightgbm
+    n_estimators: 300
+    test_size: 0.3
+
+mlflow:
+  tracking_uri: http://localhost:5000
+  experiment_name: nbp-recommender
+
+api:
+  host: 0.0.0.0
+  port: 8000
+
+dashboard:
+  host: 0.0.0.0
+  port: 8501

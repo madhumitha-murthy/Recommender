@@ -1,0 +1,136 @@
+# Banking product catalogue
+# Each product has eligibility rules, risk level, and typical customer profile
+# These drive realistic synthetic data generation and content-based features
+
+products:
+  - id: SAVINGS_360
+    name: "360 Savings Account"
+    category: deposits
+    min_income: 0
+    min_age: 18
+    min_balance: 0
+    risk_level: low
+    typical_tenure_months: 0
+    description: "Earn bonus interest on salary credit, card spend, and insurance"
+    cross_sell_from: []
+
+  - id: SALARY_PLUS
+    name: "Salary Plus Account"
+    category: deposits
+    min_income: 3000
+    min_age: 21
+    min_balance: 500
+    risk_level: low
+    typical_tenure_months: 3
+    description: "Higher interest for salary crediting with step-up bonus tiers"
+    cross_sell_from: [SAVINGS_360]
+
+  - id: FIXED_DEPOSIT
+    name: "Fixed Deposit"
+    category: deposits
+    min_income: 5000
+    min_age: 21
+    min_balance: 10000
+    risk_level: low
+    typical_tenure_months: 6
+    description: "Guaranteed returns with tenures from 1 to 36 months"
+    cross_sell_from: [SAVINGS_360, SALARY_PLUS]
+
+  - id: CREDIT_CARD_BASIC
+    name: "Cashback Credit Card"
+    category: cards
+    min_income: 2500
+    min_age: 21
+    min_balance: 0
+    risk_level: medium
+    typical_tenure_months: 3
+    description: "Up to 5% cashback on dining, groceries, and online spend"
+    cross_sell_from: [SAVINGS_360]
+
+  - id: CREDIT_CARD_PREMIUM
+    name: "Rewards Premium Card"
+    category: cards
+    min_income: 6000
+    min_age: 25
+    min_balance: 0
+    risk_level: medium
+    typical_tenure_months: 12
+    description: "Miles earning, lounge access, premium rewards for high spenders"
+    cross_sell_from: [CREDIT_CARD_BASIC, SALARY_PLUS]
+
+  - id: PERSONAL_LOAN
+    name: "Personal Loan"
+    category: loans
+    min_income: 3000
+    min_age: 21
+    min_balance: 0
+    risk_level: high
+    typical_tenure_months: 6
+    description: "Unsecured personal loan up to 10x monthly salary"
+    cross_sell_from: [CREDIT_CARD_BASIC, SAVINGS_360]
+
+  - id: HOME_LOAN
+    name: "Home Loan"
+    category: loans
+    min_income: 5000
+    min_age: 25
+    min_balance: 0
+    risk_level: high
+    typical_tenure_months: 24
+    description: "Competitive home financing with fixed and floating rate options"
+    cross_sell_from: [FIXED_DEPOSIT, SALARY_PLUS]
+
+  - id: INVESTMENT_FUND
+    name: "Unit Trust / Fund"
+    category: wealth
+    min_income: 5000
+    min_age: 21
+    min_balance: 1000
+    risk_level: high
+    typical_tenure_months: 12
+    description: "Diversified fund portfolio managed by professional fund managers"
+    cross_sell_from: [FIXED_DEPOSIT, SAVINGS_360]
+
+  - id: ROBO_INVEST
+    name: "Robo-Advisory"
+    category: wealth
+    min_income: 3000
+    min_age: 21
+    min_balance: 100
+    risk_level: medium
+    typical_tenure_months: 6
+    description: "Automated portfolio allocation based on risk profile"
+    cross_sell_from: [SAVINGS_360, CREDIT_CARD_BASIC]
+
+  - id: INSURANCE_LIFE
+    name: "Term Life Insurance"
+    category: insurance
+    min_income: 2500
+    min_age: 21
+    min_balance: 0
+    risk_level: low
+    typical_tenure_months: 6
+    description: "Affordable term life coverage up to age 99"
+    cross_sell_from: [HOME_LOAN, SAVINGS_360]
+
+  - id: INSURANCE_HEALTH
+    name: "Health Insurance"
+    category: insurance
+    min_income: 0
+    min_age: 18
+    min_balance: 0
+    risk_level: low
+    typical_tenure_months: 3
+    description: "Hospitalisation and critical illness coverage"
+    cross_sell_from: [INSURANCE_LIFE, SAVINGS_360]
+
+  - id: BUSINESS_ACCOUNT
+    name: "Business Account"
+    category: business
+    min_income: 0
+    min_age: 21
+    min_balance: 1000
+    risk_level: medium
+    typical_tenure_months: 12
+    description: "Business current account with integrated digital banking"
+    cross_sell_from: [SAVINGS_360, SALARY_PLUS]
